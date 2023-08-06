@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>人力资源管理论文题目表格</title>
+    <script src="./data.json"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ffa07a;
+            /* 使用其他颜色，此处使用薄荷红色 */
+            color: #fff;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>人力资源管理论文题目表格</h1>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>研究方向</th>
+                <th>研究难度</th>
+                <th>研究内容的描述</th>
+            </tr>
+            <tr v-for="item in them" :key="item.id">
+                <td>{{ item.id }}</td>
+                <td>{{ item.direct }}</td>
+                <td :style="{'background-color':item.diff=='高'?'red':item.diff=='低'?'rgb(78, 253, 72)':'#ffdab9'}">{{ item.diff }}
+                </td>
+                <td>{{ item.desc }}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                them: list.themList// 使用导入的JSON数据
+            },
+
+        });
+    </script>
+</body>
+
+</html>
